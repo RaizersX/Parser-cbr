@@ -33,10 +33,6 @@ result = {
     'updated' : date.strftime('%d:%m:%Y_%H:%M'),
     'currencies' : currencies
 }
-
-with open('last.json', 'w', encoding='utf-8') as file:
-    json.dump(result, file, indent=2, ensure_ascii=False)
-
 old_data = {}
 with open('last.json', 'r', encoding='utf-8') as file:
     old = json.load(file)
@@ -55,3 +51,7 @@ for item in currencies:
         print(f"{code}: {new_rate} ₽ {sign} {abs(diff):.2f}")
     else:
         print(f"{code}: {new_rate} ₽ (нет данных за вчера)")    
+
+with open('last.json', 'w', encoding='utf-8') as file:
+    json.dump(result, file, indent=2, ensure_ascii=False)
+
